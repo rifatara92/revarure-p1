@@ -1,4 +1,5 @@
 
+
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser'); //Parse incoming request bodies in a middleware before your handlers, available under the req.body property.
@@ -18,9 +19,9 @@ const {
    uploadStreamToBlockBlob
  } = require('@azure/storage-blob');
 const inMemoryStorage = multer.memoryStorage();
-const uploadStrategy = multer({ storage: inMemoryStorage }).single('image');
+const uploadStrategy = multer({ storage: inMemoryStorage }).single('myFile');
 const getStream = require('into-stream');
-const containerName = 'images';
+const containerName = 'rblobcontainer';
 const ONE_MEGABYTE = 1024 * 1024;
 const uploadOptions = { bufferSize: 4 * ONE_MEGABYTE, maxBuffers: 20 };
 const ONE_MINUTE = 60 * 1000;
@@ -39,6 +40,7 @@ const sharedKeyCredential = new SharedKeyCredential(
    const identifier = Math.random().toString().replace(/0\./, ''); 
    return `${identifier}-${originalName}`;
  };
+ 
 app.use(logger('dev'));  // Creating a logger (using morgan)
 app.use(bodyParser());  // to use bodyParser (for data transfer between client and server)
 app.use(express.static('.'));  // making current directory as a static directory
@@ -97,4 +99,5 @@ app.use(express.static('.'));
 app.listen(port, () => {   // To make the server live
    console.log(`App is live on port ${port}`);
 });
+
 
