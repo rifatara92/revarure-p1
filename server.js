@@ -29,7 +29,6 @@ const ONE_MEGABYTE = 1024 * 1024;
 const uploadOptions = { bufferSize: 4 * ONE_MEGABYTE, maxBuffers: 20 };
 const ONE_MINUTE = 60 * 1000;
 const aborter = Aborter.timeout(30 * ONE_MINUTE);
-const stream = getStream(req.file.buffer);
 const blockBlobURL = BlockBlobURL.fromContainerURL(containerURL, blobName);
 
 const sharedKeyCredential = new SharedKeyCredential(
