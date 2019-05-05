@@ -6,9 +6,8 @@ const logger = require('morgan');
 const path = require('path');
 const fs = require('fs');
 const directoryPath = path.join(__dirname, '/uploads'); // join the path to the current directory
-const port = 4000; // Define port for app to listen on
+const port = 8080; // Define port for app to listen on
 const app =  express();
-const sequelize = require('sequelize');
 app.use(logger('dev'));  // Creating a logger (using morgan)
 app.use(bodyParser());  // to use bodyParser (for data transfer between client and server)
 app.use(express.static('.'));  // making current directory as a static directory
