@@ -29,7 +29,6 @@ const ONE_MEGABYTE = 1024 * 1024;
 const uploadOptions = { bufferSize: 4 * ONE_MEGABYTE, maxBuffers: 20 };
 const ONE_MINUTE = 60 * 1000;
 const aborter = Aborter.timeout(30 * ONE_MINUTE);
-const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);
 
 const sharedKeyCredential = new SharedKeyCredential(
    process.env.AZURE_STORAGE_ACCOUNT_NAME,
@@ -58,6 +57,7 @@ app.post('/upload', uploadStrategy, async (req, res) => {
    const aborter = Aborter.timeout(30 * ONE_MINUTE);
    const blobName = getBlobName(req.file.originalname);
    const stream = getStream(req.file.buffer);
+   const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);
    const blockBlobURL = BlockBlobURL.fromContainerURL(containerURL, blobName);
    
    try {
