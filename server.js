@@ -1,3 +1,5 @@
+
+require('dotenv').config();
 const {
    Aborter,
    BlobURL,
@@ -96,5 +98,4 @@ app.get('/images', (req, res) => {
 app.listen(port, () => {   // To make the server live
    console.log(`App is live on port ${port}`);
 });
-
 
