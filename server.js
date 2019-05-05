@@ -22,7 +22,7 @@ const logger = require('morgan');
 const port = 8080; // Define port for app to listen on
 const app =  express();
 const inMemoryStorage = multer.memoryStorage();
-const uploadStrategy = multer({ storage: inMemoryStorage }).single('myFile');
+const uploadStrategy = multer({ storage: inMemoryStorage }).single('image');
 const getStream = require('into-stream');
 const containerName = 'images';
 const ONE_MEGABYTE = 1024 * 1024;
@@ -62,8 +62,7 @@ app.post('/upload', uploadStrategy, async (req, res) => {
    
    try {
        
-       await uploadStreamToBlockBlob(aborter, stream,
-       blockBlobURL, uploadOptions.bufferSize, uploadOptions.maxBuffers);
+       await uploadStreamToBlockBlob(aborter, stream, blockBlobURL, uploadOptions.bufferSize, uploadOptions.maxBuffers);
    
        res.redirect('/');   
    
