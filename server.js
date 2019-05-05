@@ -2,7 +2,6 @@
 require('dotenv').config();
 const {
    Aborter,
-   BlobURL,
    BlockBlobURL,
    ContainerURL,
    ServiceURL,
