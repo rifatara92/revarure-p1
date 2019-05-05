@@ -41,18 +41,6 @@ app.listen(port, () => {   // To make the server live
 });
 
 
-const psql = new sequelize('servername', 'useradmin', 'password', {
-   host: 'maypsql.postgres.database.azure.com',
-   dialect: 'postgres',
-   dialectOptions: {
-     ssl: true,
-     options: {
-       encrypt: true,
-   }
-  }
-  });
-
-
 
 
 
